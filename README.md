@@ -45,3 +45,14 @@ let food = {
     parity: true, //переменная для анимации еды
 }
 ```
+3. Объект класса "Элемент змейки" (также содержит координаты своего местоположения):
+``` javascript
+class SnakeItem {
+    constructor(x, y) {
+        this.x = x * sizeBox;
+        this.y = y * sizeBox;
+    }
+}
+
+let snake = [new SnakeItem(7, 7), new SnakeItem(6, 7), new SnakeItem(5, 7)];
+```
