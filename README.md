@@ -56,3 +56,41 @@ class SnakeItem {
 
 let snake = [new SnakeItem(7, 7), new SnakeItem(6, 7), new SnakeItem(5, 7)];
 ```
+4. Методы для обновления направления движения в зависимости от того, какую клавишу нажмёт пользователь:
+``` javascript
+function setMoving() {
+    if (event.code == 'KeyS' && button != "u") {
+      button = "d";
+    }
+    if (event.code == 'KeyA' && button != "r") {
+        button = "l";
+    }
+    if (event.code == 'KeyW' && button != "d") {
+        button = "u"
+    }
+    if (event.code == 'KeyD' && button != "l") {
+        button = "r";
+    }
+}
+
+let moving = () => {
+    
+        for (let i = snake.length-1; i >= 1; i--) {
+            snake[i].x = snake[i-1].x;
+            snake[i].y = snake[i-1].y;
+        }
+    
+        if (button == "u"){
+            snake[0].y -= sizeBox;
+        }
+        if (button == "l"){
+            snake[0].x -= sizeBox;
+        }
+        if (button == "r"){
+            snake[0].x += sizeBox;
+        }
+        if (button == "d"){
+            snake[0].y += sizeBox;
+        }
+}
+```
