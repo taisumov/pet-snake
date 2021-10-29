@@ -42,6 +42,6 @@ let onPause = true;
 let food = {
     x: Math.round(Math.random()*(sizeOfBackgroud-1))*sizeBox,
     y: Math.round(Math.random()*(sizeOfBackgroud-1))*sizeBox,
-    parity: true,
+    parity: true, //переменная для анимации еды
 }
 ```
