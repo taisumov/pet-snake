@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+@font-face {
+    font-family: 'bit';
+    src:  url('c:/WEB/snake-game/fonts/8bit.otf');
+    font-style: normal; 
+    font-weight: normal; 
+  }
+
+/*Обнуление*/
+*{padding: 0;margin: 0;border: 0;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height:100%;width:100%;font-size:100%;line-height:1;font-size:14px;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner{padding:0;border:0;}
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
+/*--------------------*/
+
+body {
+    background-color: black;
+    display: grid;
+
+    .container {
+
+        display: grid;
+        grid-template-rows: 1fr 3fr;
+        justify-content: center;
+        color: white;
+
+        place-items: center;
+        grid-gap: 10px;
+        align-items: center;
+        height: 100vh;
+
+        // @media screen and (max-width: 830px) {
+            
+        //     display: flex;
+        //     flex-direction: column;
+        //     place-items: center;
+        //     grid-gap: 10px;
+        //     align-items: center;
+        //     height: 100vh;
+        // }
+            .score_board {
+            
+                display: grid;
+                place-items: center;
+                width: 100%;
+                height: 100%;
+
+                #score {
+                    font-family: 'Lato', sans-serif;
+                    font-weight: bold;
+                    //font-family: 'bit', Nominal;
+                    font-size: 40px;
+                }
+
+                .title {
+                    font-family: 'Lato', sans-serif;
+                    font-weight: bold;
+                    //font-family: 'bit';
+                    font-size: 40px;
+                }
+
+            }
+
+            .canv {
+                width: 100%;
+                height: 100%;
+                display: grid;
+                place-items: center;
+            }
+    }
+}
