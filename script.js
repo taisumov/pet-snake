@@ -5,19 +5,15 @@ document.body.style.overflowY='hidden';
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
-//Картинка для фона
 const ground = new Image();
 ground.src = "img/playround.png";
 
-//Картинка для еды
 const foodImg = new Image();
 foodImg.src = "img/food.png";
 
-//Картинка для головы змеи
 const snakeHeadImg = new Image();
 snakeHeadImg.src = "img/snakehead.png";
 
-//Переменные для игры
 let scoring = document.getElementById("score");
 let sizeBox = 35;
 let score = 0;
@@ -30,14 +26,12 @@ let game = null;
 let onLose = null;
 let onPause = true;
 
-//Объект еды
 let food = {
     x: Math.round(Math.random()*(sizeOfBackgroud-1))*sizeBox,
     y: Math.round(Math.random()*(sizeOfBackgroud-1))*sizeBox,
     parity: true,
 }
 
-//Создание класса змеи
 class SnakeItem {
     constructor(x, y) {
         this.x = x * sizeBox;
@@ -47,7 +41,6 @@ class SnakeItem {
 
 let snake = [new SnakeItem(7, 7), new SnakeItem(6, 7), new SnakeItem(5, 7)];
 
-//Перемещение змеи в зависимости от нажатой клавиши
 function setMoving() {
     if (event.code == 'KeyS' && button != "u") {
       button = "d";
@@ -63,9 +56,6 @@ function setMoving() {
     }
 }
 
-
-
-//Перемещение змеи в зависимости от нажатой клавиши (№2)
 let moving = () => {
     
         for (let i = snake.length-1; i >= 1; i--) {
@@ -87,7 +77,6 @@ let moving = () => {
         }
 }
 
-//Проверка на проигрыш
 let checkLose = () => {
 
     if((snake[0].x >= sizeBox*sizeOfBackgroud) || (snake[0].x < 0) || (snake[0].y >= sizeBox*sizeOfBackgroud) || (snake[0].y < 0)){
@@ -99,13 +88,12 @@ let checkLose = () => {
             if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
                 onLose = true;
                 clearTimeout(game);
-                //btnStart.innerHTML = "Restart";
             }
         }
     }
 
 }
-//Отрисовка фона
+
 let renderBackground = () => {
     
     canvas.width = sizeBox*sizeOfBackgroud;
@@ -119,12 +107,10 @@ let renderBackground = () => {
     }
 }
 
-//Отрисовка кадра
 let drawFrame = () => {
 
     checkLose();
 
-    //Отрисовка поля и еды
     renderBackground();
 
     ctx.fillStyle = "#E72929";
@@ -136,17 +122,14 @@ let drawFrame = () => {
 	
     food.parity = !food.parity;
 
-    //Перемещение змеи
     moving();
-
-    //Отрисовка змеи
+	
     ctx.drawImage(snakeHeadImg, snake[0].x + 2, snake[0].y + 2, sizeBox - 4, sizeBox - 4);
     for (let i = 1; i < snake.length; i++) {
         ctx.fillStyle = "#29E75E";
 		ctx.fillRect(snake[i].x + 2, snake[i].y + 2, sizeBox - 4, sizeBox - 4);
     }
 
-    //Проверка на получение очков и генерация новой еды
     if (snake[0].x == food.x && snake[0].y == food.y)
     {
         score++;
@@ -179,17 +162,11 @@ let drawFrame = () => {
     
 }
 
-//Проверка на запуск игры
 let start = () => {
 
     if(onPause) {
-
-        //btnStart.innerHTML = "Start";
-        //btnPause.innerHTML = "Pause";
         onPause = false;
-
     } else {
-
         button = "r";
         snake = [new SnakeItem(7, 7), new SnakeItem(6, 7), new SnakeItem(5, 7)];
         score = 0;
@@ -197,7 +174,6 @@ let start = () => {
 
         if(onLose) {
             onLose = false;
-            //btnStart.innerHTML = "Start";
         }
 
     }
@@ -206,7 +182,6 @@ let start = () => {
     game = setInterval(drawFrame, speed);
 }
 
-//Проверка на паузу
 let pause = () => {
     onPause = true;
     clearTimeout(game);
